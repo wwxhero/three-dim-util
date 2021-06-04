@@ -10,6 +10,10 @@ option(THREEDIMUTIL_BUILD_DEMOS "Build demos" OFF)
 
 # ------------------------------------------------------------------------------
 
+if (WIN32 AND CMAKE_SYSTEM_VERSION)
+	add_compile_definitions(_USE_MATH_DEFINES)
+endif()
+
 if(APPLE AND EXISTS /usr/local/opt/qt)
 	list(APPEND CMAKE_PREFIX_PATH "/usr/local/opt/qt")
 endif()

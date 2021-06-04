@@ -5,6 +5,14 @@
 #include <Eigen/Core>
 #include <Eigen/Geometry>
 
+#if defined _WINDOWS
+#pragma push_macro("near")
+#pragma push_macro("far")
+#undef near
+#undef far
+#endif
+
+
 namespace threedimutil
 {
     inline Eigen::Matrix4d make_perspective(double fov,
@@ -98,5 +106,10 @@ namespace threedimutil
                 ).finished();
     }
 }
+
+#if defined _WINDOWS
+#pragma pop_macro("near")
+#pragma pop_macro("far")
+#endif
 
 #endif /* matrix_hpp */
